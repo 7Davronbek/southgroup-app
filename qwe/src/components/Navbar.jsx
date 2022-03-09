@@ -1,23 +1,7 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-    const [student, setStudent] = useState([])
-    useEffect(() => {
-        getStudent()
-    }, [])
-
-    const getStudent = () => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then((res) => {
-                setStudent(res.data)
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-        }
     return (
         <>
 
@@ -55,21 +39,9 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="navbarLine"></div>
+            
 
-            <h1>Student</h1>
-            {student?.map((item) => {
-                return (
-                    <Link to={`/student/${item.id}`} key={item.id}>
-                        <div className="card">
-                            <div className="card-body">
-                                <h3>{item.name}</h3>    
-                                <p>{item.company.bs}</p>
-                            </div>
-                        </div>
-                    </Link>
-                )
-            })}
+            <div className="navbarLine"></div>
         </>
     )
 }
