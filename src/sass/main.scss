@@ -78,7 +78,14 @@ body {
 
     .navBar {
         padding: 25px;
-
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 9999;
+        background-color: #ffffff8a;
+        box-shadow: 0 0 10px silver;
+    
         li {
 
             a {
@@ -98,7 +105,9 @@ body {
         }
     }
 
-
+    .navbarLine {
+        padding-top: 116px;
+    }
 
     #myTabs {
 
@@ -151,11 +160,6 @@ body {
 
     }
 
-
-
-
-
-
     .blur {
         position: absolute;
         top: 0;
@@ -172,7 +176,6 @@ body {
     .zed {
         z-index: 111;
     }
-
 
     .header {
         background-color: $orgdark;
@@ -244,7 +247,6 @@ body {
         }
 
     }
-
 
     .pop-categories {
         h2 {
