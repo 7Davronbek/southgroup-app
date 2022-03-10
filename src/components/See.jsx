@@ -9,13 +9,12 @@ const See = (props) => {
     useEffect(() => {
         axios.get(`https://jsonplaceholder.typicode.com/users/${props.match.params.id}`)
             .then((res) => {
-                console.log(res);
                 setOne(res.data)
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, [])
+    }, [props.match.params.id])
     
     return (
         <>

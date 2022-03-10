@@ -12,7 +12,6 @@ const Navbar = () => {
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then((res) => {
                 setStudent(res.data)
-                console.log(res);
             })
             .catch((err) => {
                 console.log(err);

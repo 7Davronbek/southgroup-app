@@ -1,7 +1,19 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Catalog = () => {
+    const [qwe, setQwe] = useState([])
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/photos')
+            .then((res) => {
+                console.log(res.data);
+                setQwe(res.data)
+            })
+            .catch((err) => {
+                console.log(err);
+            }) 
+    }, [])
     return (
         <>
             <div className="pop-categories mt-5">
@@ -119,6 +131,26 @@ const Catalog = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div className="row">
+                        {qwe.map((item, index) => {
+                            return(
+                                <>
+                                    <Link to={`/katalog/${item.id}`} key={index} className="col-lg-4 mb-4">
+                                        <div className="card">
+                                            <div className="card-header">
+                                                <img className='w-100' src={item.url} alt={item.title} />
+                                            </div>
+                                            <div className="card-body">
+                                                <h3>{item.title}</h3>
+                                                <p>{item.thumbnailUrl}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
