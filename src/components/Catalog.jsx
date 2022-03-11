@@ -12,7 +12,7 @@ const Catalog = () => {
             })
             .catch((err) => {
                 console.log(err);
-            }) 
+            })
     }, [])
     return (
         <>
@@ -134,6 +134,27 @@ const Catalog = () => {
                     </div>
 
                     <div className="row">
+
+                        {qwe.splice(0,7).map((item, index) => {
+                            return (
+                                <>
+                                    <Link to={`/katalog/${item.id}`} key={index} className="col-lg-4 mb-4">
+                                        <div className="card">
+                                            <div className="card-header">
+                                                <img className='w-100' src={item.url} alt={item.title} />
+                                            </div>
+                                            <div className="card-body">
+                                                <h3>{item.title}</h3>
+                                                <p>{item.thumbnailUrl}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </>
+                            )
+                        })}
+                    </div>
+
+                    {/* <div className="row">
                         {qwe.map((item, index) => {
                             return(
                                 <>
@@ -151,7 +172,8 @@ const Catalog = () => {
                                 </>
                             )
                         })}
-                    </div>
+                        
+                    </div> */}
                 </div>
             </div>
         </>
