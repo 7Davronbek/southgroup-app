@@ -1,52 +1,75 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from 'reactstrap';
+import classnames from 'classnames';
+import axios from 'axios';
 
 const Navbar = () => {
-    const [student, setStudent] = useState([])
+
+    const [myTabs, setMyTabs] = useState(false)
+    const [activeTab, setActiveTab] = useState('1');
+    const [navbar, setNavbar] = useState(false);
+    const [categories, setCategories] = useState([])
+
+
+    const toggle = tab => {
+        if (activeTab !== tab) setActiveTab(tab);
+    }
+
+
+    const getAllCategory = () => {
+        axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
+            .then((res) => {
+                setCategories(res.data.categories)
+            })
+            .catch(err => { console.log(err); })
+    }
+
+    const changeNavbar = () => {
+        if (window.scrollY >= 30) {
+            setNavbar(true);
+        } else {
+            setNavbar(false)
+        }
+    }
+
+    window.addEventListener('scroll', changeNavbar);
+
     useEffect(() => {
-        getStudent()
+        getAllCategory()
     }, [])
 
-    const getStudent = () => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
-            .then((res) => {
-                setStudent(res.data)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-        }
     return (
         <>
 
-            <div className="navBar">
+            <div className={`navBar ${navbar ? 'active' : null}`}>
                 <div className="container">
                     <div className="row">
                         <div className="nav-01 col-12">
                             <ul className="d-flex justify-content-between align-items-center">
                                 <li>
-                                    <Link to='/'
-                                        href="#"
-                                        className="katalog"
+                                    <Link to='/catalog'
+                                        onClick={() => setMyTabs(false)} 
+                                        className={`katalog`}
+                                        onMouseEnter={() => setMyTabs(true)}
                                         id="katalog"
                                     >
                                         Каталог
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to='/' href="#"> Услуги </Link>
+                                    <Link onClick={() => setMyTabs(false)}  to='/'> Услуги </Link>
                                 </li>
                                 <li>
-                                    <Link to='/' href="#">
-                                        <img src="/img/logo.svg" alt="" />
+                                    <Link onClick={() => setMyTabs(false)}  to='/'>
+                                        <img src="/img/logo.png" style={{ width: '180px' }} alt="" />
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to='/' href="#"> О компании </Link>
+                                    <Link onClick={() => setMyTabs(false)}  to='/'> О компании </Link>
                                 </li>
                                 <li>
-                                    <Link to='/' href="#"> Контакты </Link>
+                                    <Link onClick={() => setMyTabs(false)}  to='/'> Контакты </Link>
                                 </li>
                             </ul>
                         </div>
@@ -56,19 +79,56 @@ const Navbar = () => {
 
             <div className="navbarLine"></div>
 
-            <h1>Student</h1>
-            {student?.map((item) => {
-                return (
-                    <Link to={`/student/${item.id}`} key={item.id}>
-                        <div className="card">
-                            <div className="card-body">
-                                <h3>{item.name}</h3>    
-                                <p>{item.company.bs}</p>
-                            </div>
+
+            <div className={`myTab ${myTabs ? 'active' : ''} ${navbar ? 'actived' : null}`}>
+                <div onClick={() => setMyTabs(false)} className="closes">x</div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4">
+                            <Nav tabs className='d-flex flex-column justify-content-end  nav-pills nav-justified'>
+                                {categories.map((item, index) => {
+                                    return (
+                                        <NavItem
+                                            key={index}
+                                        >
+                                            <NavLink
+                                                className={classnames({ active: activeTab === `${index + 1}` })}
+                                                onClick={() => { toggle(`${index + 1}`) }}
+                                            >
+                                                {item.name}
+                                            </NavLink>
+                                        </NavItem>
+                                    )
+                                })}
+                            </Nav>
                         </div>
-                    </Link>
-                )
-            })}
+                        <div className="col-6">
+                            <TabContent activeTab={activeTab}>
+                                <TabPane tabId="1" className=''>
+                                    <Row>
+                                        <Link to='/'>Lorem ipsum dolor sit amet.</Link>
+                                    </Row>
+                                </TabPane>
+                                <TabPane tabId="2" className='   '>
+                                    <Row>
+                                        <Link to='/'>Lorem, ipsum.</Link>
+                                    </Row>
+                                </TabPane>
+                                <TabPane tabId="3" className='   '>
+                                    <Row>
+                                        <Link to='/'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, laudantium?</Link>
+                                    </Row>
+                                </TabPane>
+
+                            </TabContent>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </>
     )
 }

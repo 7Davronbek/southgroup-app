@@ -22,22 +22,23 @@ export default function App() {
                             <Swiper
                                 effect={"cube"}
                                 grabCursor={true}
+                                loop={true}
                                 cubeEffect={{
-                                    spaceBetween: 30,
-                                    loop: true,
                                     centeredSlides: true,
                                     shadow: true,
                                     slideShadows: true,
                                     shadowOffset: 20,
                                     shadowScale: 0.94,
                                 }}
-                                pagination={true}
+                                pagination={{
+                                    clickable: true,
+                                }}
                                 modules={[EffectCube, Pagination]}
                                 className="swiper mySwiper">
 
                                 <div className="swiper-wrapper">
                                     <SwiperSlide className="swiper-slide card position-relative">
-                                        <img src="/img/header-01.png" alt="" className="card-img" />
+                                        <img src="/img/taxeometr-header-01.webp" alt="" className="card-img" />
                                         <div className="blur"></div>
                                         <div className="card-img-overlay zed">
                                             <h5 className="card-title">
@@ -50,7 +51,7 @@ export default function App() {
                                         </div>
                                     </SwiperSlide>
                                     <SwiperSlide className="swiper-slide card position-relative">
-                                        <img src="/img/header-02.png" alt="" className="card-img" />
+                                        <img src="/img/gnss-header-02.webp" alt="" className="card-img" />
                                         <div className="blur"></div>
                                         <div className="card-img-overlay zed">
                                             <h5 className="card-title">
@@ -63,7 +64,7 @@ export default function App() {
                                         </div>
                                     </SwiperSlide>
                                     <SwiperSlide className="swiper-slide card position-relative">
-                                        <img src="/img/header-03.png" alt="" className="card-img" />
+                                        <img src="/img/nivelir-header-03.webp" alt="" className="card-img" />
                                         <div className="blur"></div>
                                         <div className="card-img-overlay zed">
                                             <h5 className="card-title">
