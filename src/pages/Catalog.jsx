@@ -9,6 +9,12 @@ const Catalog = () => {
     const [category, setCategory] = useState([])
     const [taxeometr, setTaxeometr] = useState([])
     const [gnss, setGnss] = useState([])
+    const [nivelir, setNivelir] = useState([])
+    const [lazerniy, setLazerniy] = useState([])
+    const [teodolit, setTeodolit] = useState([])
+    const [trassoiskatel, setTrassoiskatel] = useState([])
+    const [acsessuary, setAcsessuary] = useState([])
+    
     const [activeTab, setActiveTab] = useState('1');
     const [loading, setLoading] = useState(false)
 
@@ -33,10 +39,60 @@ const Catalog = () => {
 
     }
 
-    const getGgss = async() => {
+    const getGgss = async () => {
         await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/gnss')
             .then((res) => {
                 setGnss(res.data.gnss)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const getNivelir = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/nivelir')
+            .then((res) => {
+                setNivelir(res.data.nivelir)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    const getLazerniy = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/lazerniy')
+            .then((res) => {
+                setLazerniy(res.data.lazerniy)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+    
+    const getTeo = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/teodolit')
+            .then((res) => {
+                setTeodolit(res.data.teodolit)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+    
+    const getTrass = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/trassoiskatel')
+            .then((res) => {
+                setTrassoiskatel(res.data.trassoiskatel)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+    
+    const getAcs = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/acsessuary')
+            .then((res) => {
+                setAcsessuary(res.data.acsessuary)
             })
             .catch((err) => {
                 console.log(err);
@@ -48,6 +104,11 @@ const Catalog = () => {
         getCategory()
         getTaxeometr()
         getGgss()
+        getNivelir()
+        getLazerniy()
+        getTeo()
+        getTrass()
+        getAcs()
 
         setTimeout(() => {
             setLoading(false)
@@ -117,20 +178,118 @@ const Catalog = () => {
                                         {gnss.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center' to={`/catalog/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-gnss/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
-                                                        {item.title}
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
                                                     </Link>
                                                 </div>
                                             )
                                         })}
                                     </Row>
                                 </TabPane>
+
                                 <TabPane tabId="3" className='   '>
                                     <Row>
-                                        <Link to='/'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, laudantium?</Link>
+                                        {nivelir.map((item, index) => {
+                                            return (
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-nivelir/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )
+                                        })}
+                                    </Row>
+                                </TabPane>
+
+                                <TabPane tabId="4" className='   '>
+                                    <Row>
+                                        {lazerniy.map((item, index) => {
+                                            return (
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-lazerniy/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )
+                                        })}
+                                    </Row>
+                                </TabPane>
+
+                                <TabPane tabId="5" className='   '>
+                                    <Row>
+                                        {teodolit.map((item, index) => {
+                                            return (
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-teodolit/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )
+                                        })}
+                                    </Row>
+                                </TabPane>
+
+                                <TabPane tabId="6" className='   '>
+                                    <Row>
+                                        {trassoiskatel.map((item, index) => {
+                                            return (
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-trassoiskatel/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )
+                                        })}
+                                    </Row>
+                                </TabPane>
+
+                                <TabPane tabId="7" className='   '>
+                                    <Row>
+                                        {acsessuary.map((item, index) => {
+                                            return (
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog/acsessuary/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )
+                                        })}
                                     </Row>
                                 </TabPane>
 

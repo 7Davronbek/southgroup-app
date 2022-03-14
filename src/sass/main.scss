@@ -106,7 +106,7 @@ body {
         width: 30px;
         height: 30px;
         border: 1px solid $org;
-        border-radius: 50%;
+        border-radius: 10px;
         background-color: transparent;
         overflow: hidden;
         position: fixed;
@@ -494,6 +494,9 @@ body {
 
             img {
                 transition: all .4s ease;
+                width: 400px;
+                height: 400px;
+                object-fit: contain;
             }
 
             &:hover {

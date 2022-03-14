@@ -42,7 +42,7 @@ const LastProduct = () => {
                                 {product.map((item, index) => {
                                     return (
                                         <SwiperSlide className="h-100" key={index}>
-                                            <Link to={`/catalog/${item.id}`} className="card h-100 ">
+                                            <Link to={`/new-catalog/${item.id}`} className="card h-100 ">
                                                 <img src={`./img/${item.image}`} className="card-img-top" alt="" />
                                                 <div className="card-body">
                                                     <h5 className="card-title">{item.title}</h5>
