@@ -16,19 +16,22 @@ import CustomCursor from "./components/cursor/CustomCursor";
 import Navbar from "./components/Navbar";
 import SeeNewProduct from "./components/SeeNewProduct";
 import Footer from "./components/Footer";
-import Category from "./pages/Category";
+import Catalog from "./pages/Catalog";
+import CatalogView from "./pages/CatalogView";
 
 ReactDOM.render(
   <Router>
     <Cursor />
-
     <CustomCursor />
 
     <Navbar />
 
     <Switch>
       <Route path="/" exact component={App} />
-      <Route path="/catalog" exact component={Category} />
+
+      <Route path="/catalog" exact component={Catalog} />
+      <Route path="/catalog/:id" exact component={CatalogView} />
+
       <Route path="/catalog/:qwe" exact component={SeeNewProduct} />
     </Switch>
 

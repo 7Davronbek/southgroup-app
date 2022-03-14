@@ -39,7 +39,7 @@ const LastProduct = () => {
                                 modules={[Pagination]}
                                 className="mySwiper mt-5"
                             >
-                                {product.splice(0, 5).map((item, index) => {
+                                {product.map((item, index) => {
                                     return (
                                         <SwiperSlide className="h-100" key={index}>
                                             <Link to={`/catalog/${item.id}`} className="card h-100 ">

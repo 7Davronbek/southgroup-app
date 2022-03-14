@@ -3,23 +3,27 @@ import React, { useEffect, useState } from 'react'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom'
+import HashLoader from "react-spinners/HashLoader";
 
-const Category = () => {
+const Catalog = () => {
     const [category, setCategory] = useState([])
     const [taxeometr, setTaxeometr] = useState([])
     const [gnss, setGnss] = useState([])
     const [activeTab, setActiveTab] = useState('1');
+    const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
+    const getCategory = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
             .then((res) => {
                 setCategory(res.data.categories)
             })
             .catch((err) => {
                 console.log(err);
             })
+    }
 
-        axios.get('https://laravelcrudtutorial.000webhostapp.com/api/taxeometr')
+    const getTaxeometr = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/taxeometr')
             .then((res) => {
                 setTaxeometr(res.data.taxeometr)
             })
@@ -27,13 +31,27 @@ const Category = () => {
                 console.log(err);
             })
 
-            axios.get('https://laravelcrudtutorial.000webhostapp.com/api/gnss')
-                .then((res) => {
-                    setGnss(res.data.gnss)
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
+    }
+
+    const getGgss = async() => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/gnss')
+            .then((res) => {
+                setGnss(res.data.gnss)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        setLoading(true)
+        getCategory()
+        getTaxeometr()
+        getGgss()
+
+        setTimeout(() => {
+            setLoading(false)
+        }, 1400)
     }, [])
 
     const toggle = tab => {
@@ -42,6 +60,10 @@ const Category = () => {
 
     return (
         <>
+            {loading ?
+                <div className="loader">
+                    <HashLoader loading={loading} size="40" color="red" />
+                </div> : ''}
             <div className="catalog">
                 <div className="container">
                     <div className="row">
@@ -72,16 +94,19 @@ const Category = () => {
                         <div className="col-lg-9">
                             <TabContent activeTab={activeTab}>
                                 <TabPane tabId="1" className=''>
-                                    <Row>
+                                    <Row className='align-items-center'>
                                         {taxeometr.map((item, index) => {
                                             return (
-                                                <div className="col-lg-6 mb-4" key={index}> 
-                                                        <Link className='d-flex align-items-center' to={`/catalog/${item.id}`}  >
-                                                            <div>
-                                                                <img style={{width: '120px'}} src={`/img/${item.image}`} alt="" />
-                                                            </div>
-                                                            {item.title}
-                                                        </Link>
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex myCard align-items-center' to={`/catalog/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        <div>
+                                                            <h5>{item.title}</h5>
+                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
+                                                        </div>
+                                                    </Link>
                                                 </div>
                                             )
                                         })}
@@ -91,13 +116,13 @@ const Category = () => {
                                     <Row>
                                         {gnss.map((item, index) => {
                                             return (
-                                                <div className="col-lg-6 mb-4" key={index}> 
-                                                        <Link className='d-flex align-items-center' to={`/catalog/${item.id}`}  >
-                                                            <div>
-                                                                <img style={{width: '120px'}} src={`/img/${item.image}`} alt="" />
-                                                            </div>
-                                                            {item.title}
-                                                        </Link>
+                                                <div className="col-lg-6 mb-4" key={index}>
+                                                    <Link className='d-flex align-items-center' to={`/catalog/${item.id}`}  >
+                                                        <div>
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
+                                                        </div>
+                                                        {item.title}
+                                                    </Link>
                                                 </div>
                                             )
                                         })}
@@ -118,4 +143,4 @@ const Category = () => {
     )
 }
 
-export default Category
+export default Catalog
