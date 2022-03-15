@@ -80,7 +80,7 @@ const Navbar = () => {
             <div className="navbarLine"></div>
 
 
-            <div className={`myTab ${myTabs ? 'active' : ''} ${navbar ? 'actived' : null}`}>
+            <div onMouseLeave={() => setMyTabs(false)} className={`myTab ${myTabs ? 'active' : ''} ${navbar ? 'actived' : null}`}>
                 <div onClick={() => setMyTabs(false)} className="closes">x</div>
                 <div className="container">
                     <div className="row">
