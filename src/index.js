@@ -20,6 +20,10 @@ import Catalog from "./pages/Catalog";
 import CatalogView from "./pages/CatalogView";
 import CatalogView2 from "./pages/CatalogView2";
 import CatalogView3 from "./pages/CatalogView3";
+import CatalogView4 from "./pages/CatalogView4";
+import CatalogView5 from "./pages/CatalogView5";
+import CatalogView6 from "./pages/CatalogView6";
+import CatalogView7 from "./pages/CatalogView7";
 
 ReactDOM.render(
   <Router>
@@ -34,14 +38,11 @@ ReactDOM.render(
       <Route path="/catalog" exact component={Catalog} />
       <Route path="/catalog/:id" exact component={CatalogView} />
       <Route path="/catalog-gnss/:id" exact component={CatalogView2} />
-
-      <Route path="/catalog/:title/:id" exact component={CatalogView3} />
-
-      <Route path="/catalog-nivelir/:id" exact component={CatalogView2} />
-      <Route path="/catalog-lazerniy/:id" exact component={CatalogView2} />
-      <Route path="/catalog-teodolit/:id" exact component={CatalogView2} />
-      <Route path="/catalog-trassoiskatel/:id" exact component={CatalogView2} />
-      <Route path="/catalog-acsessuary/:id" exact component={CatalogView2} />
+      <Route path="/catalog-nivelir/:id" exact component={CatalogView3} />
+      <Route path="/catalog-lazerniy/:id" exact component={CatalogView4} />
+      <Route path="/catalog-teodolit/:id" exact component={CatalogView5} />
+      <Route path="/catalog-trassoiskatel/:id" exact component={CatalogView6} />
+      <Route path="/catalog-acsessuary/:id" exact component={CatalogView7} />
 
       <Route path="/new-catalog/:id" exact component={SeeNewProduct} />
     </Switch>

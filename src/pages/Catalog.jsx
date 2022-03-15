@@ -278,7 +278,7 @@ const Catalog = () => {
                                         {acsessuary.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog/acsessuary/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-acsessuary/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
