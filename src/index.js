@@ -24,6 +24,7 @@ import CatalogView4 from "./pages/CatalogView4";
 import CatalogView5 from "./pages/CatalogView5";
 import CatalogView6 from "./pages/CatalogView6";
 import CatalogView7 from "./pages/CatalogView7";
+import Three from "./pages/Three";
 
 ReactDOM.render(
   <Router>
@@ -45,6 +46,7 @@ ReactDOM.render(
       <Route path="/catalog-acsessuary/:id" exact component={CatalogView7} />
 
       <Route path="/new-catalog/:id" exact component={SeeNewProduct} />
+      <Route path="/three" exact component={Three} />
     </Switch>
 
     <Footer />
