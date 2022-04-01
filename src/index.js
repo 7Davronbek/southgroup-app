@@ -24,7 +24,17 @@ import CatalogView4 from "./pages/CatalogView4";
 import CatalogView5 from "./pages/CatalogView5";
 import CatalogView6 from "./pages/CatalogView6";
 import CatalogView7 from "./pages/CatalogView7";
-import Three from "./pages/Three";
+import About from "./components/About";
+import ScrollToTop from "./components/ScrollToTop";
+import Taxeometr from "./pages/Taxeometr";
+import Gnss from "./pages/Gnss";
+import Nivelir from "./pages/Nivelir";
+import Lazerniy from "./pages/Lazerniy";
+import Teodolit from "./pages/Teodolit";
+import Trassoiskatel from "./pages/Trassoiskatel";
+import Acsessuary from "./pages/Acsessuary";
+import Services from "./components/Services";
+import Contacts from "./components/Contacts";
 
 ReactDOM.render(
   <Router>
@@ -32,12 +42,16 @@ ReactDOM.render(
     <CustomCursor />
 
     <Navbar />
+    <ScrollToTop />
 
     <Switch>
       <Route path="/" exact component={App} />
 
       <Route path="/catalog" exact component={Catalog} />
-      <Route path="/catalog/:id" exact component={CatalogView} />
+
+      <Route path="/catalog-taxeometr/:id" exact component={CatalogView} />
+      {/* <Route path="/catalog/:title/:id" exact component={CatalogView} /> */}
+      
       <Route path="/catalog-gnss/:id" exact component={CatalogView2} />
       <Route path="/catalog-nivelir/:id" exact component={CatalogView3} />
       <Route path="/catalog-lazerniy/:id" exact component={CatalogView4} />
@@ -45,8 +59,23 @@ ReactDOM.render(
       <Route path="/catalog-trassoiskatel/:id" exact component={CatalogView6} />
       <Route path="/catalog-acsessuary/:id" exact component={CatalogView7} />
 
+      <Route path="/catalog/taxeometr" exact component={Taxeometr} />
+      <Route path="/catalog/gnss" exact component={Gnss} />
+      <Route path="/catalog/nivelir" exact component={Nivelir} />
+      <Route path="/catalog/lazerniy" exact component={Lazerniy} />
+      <Route path="/catalog/teodolit" exact component={Teodolit} />
+      <Route path="/catalog/trassoiskatel" exact component={Trassoiskatel} />
+      <Route path="/catalog/acsessuary" exact component={Acsessuary} />
+
+
+
+      <Route path="/services" exact component={Services} />
+      <Route path="/about" exact component={About} />
+      <Route path="/contacts" exact component={Contacts} />
+
+
+
       <Route path="/new-catalog/:id" exact component={SeeNewProduct} />
-      <Route path="/three" exact component={Three} />
     </Switch>
 
     <Footer />

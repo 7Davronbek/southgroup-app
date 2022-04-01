@@ -38,7 +38,7 @@ const SeeNewProduct = (props) => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-4">
-                            <img onClick={() => setIsOpen(true)} className='w-100' src={`/img/${product.image}`} alt="" />
+                            <img onClick={() => setIsOpen(true)} className='w-100' style={{ cursor:'pointer', backgroundColor: 'red' }} src={`/img/${product.image}`} alt="" />
                         </div>
 
                         <div className="col-lg-6 ml-auto">
@@ -47,7 +47,7 @@ const SeeNewProduct = (props) => {
 
                             <p className="mt-4">{product.description}</p>
 
-                            <button className="btn btn-outline-danger px-4 py-2 d-block ml-auto mt-5">Pozvonit</button>
+                            <a href='tel:+998946408356' className="myBtn view-tel ml-auto"><span></span> Позвонить</a>
                         </div>
                     </div>
 

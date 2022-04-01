@@ -15,9 +15,9 @@ const Partners = () => {
                 <br /><br />                Основным преимуществом фабрики является изготовление любого индивидуального изделия, мягкой мебели и аксессуаров из наших основных коллекций. Также присутствует линейка оригинальных интерьерных корпусных изделий.</p>
             </div>
             <div className="col-5 right">
-              <span className='top-span'>.</span>
-              <img src="./img/partners-01.png" alt="" />
-              <span className='bot-span'>.</span>
+              <div className='top-span'></div>
+              <img src="./img/nivelir-header-03.webp" alt="" />
+              <div className='bot-span'></div>
             </div>
           </div>
 

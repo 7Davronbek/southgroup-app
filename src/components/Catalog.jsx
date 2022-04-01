@@ -9,10 +9,9 @@ const Catalog = () => {
                         <div className="col-12">
                             <h2><span>П</span>опулярный каталог</h2>
                         </div>
-                        <div className="col-12 d-flex mt-5">
-                            <div className="col-3 pop-category">
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/taxeometr'>
                                         <img
                                             src="/img/taxeometr-category.webp"
                                             alt=""
@@ -24,10 +23,10 @@ const Catalog = () => {
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className="col-3 pop-category">
+                        </div>
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/gnss'>
                                         <img
                                             src="/img/gnss-category.webp"
                                             alt=""
@@ -39,10 +38,10 @@ const Catalog = () => {
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className="col-3 pop-category">
+                        </div>
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/nivelir'>
                                         <img
                                             src="/img/nivelir.webp"
                                             alt=""
@@ -54,27 +53,25 @@ const Catalog = () => {
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className="col-3 pop-category">
+                        </div>
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/lazerniy'>
                                         <img
                                             src="/img/lazerniy-category.webp"
                                             alt=""
                                             className="w-100"
-                                            height="280px"
+                                            height="300px"
                                         />
                                         <div className="card-body">
                                             <h5 className="card-title text-center">Лазерные дальномеры</h5>
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
                         </div>
-                        <div className="col-12 d-flex pop-categories mt-4">
-                            <div className="col-3 pop-category">
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/teodolit'>
                                         <img
                                             src="/img/teodolit-category.webp"
                                             alt=""
@@ -86,10 +83,10 @@ const Catalog = () => {
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className="col-3 pop-category">
+                        </div>
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/trassoiskatel'>
                                         <img
                                             src="/img/trassoiskatel-category.webp"
                                             alt=""
@@ -101,10 +98,10 @@ const Catalog = () => {
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
-                            <div className="col-3 pop-category">
+                        </div>
+                        <div className="col-lg-3 mt-5 col-md-6 pop-category">
                                 <div className="card h-100">
-                                    <Link to='/'>
+                                    <Link to='/catalog/acsessuary'>
                                         <img
                                             src="/img/acsessuary-category.webp"
                                             alt=""
@@ -116,7 +113,6 @@ const Catalog = () => {
                                         </div>
                                     </Link>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

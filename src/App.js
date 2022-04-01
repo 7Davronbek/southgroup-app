@@ -7,6 +7,7 @@ import LastProduct from "./components/LastProduct";
 import Number from "./components/Number";
 import Partners from "./components/Partners";
 import HashLoader from "react-spinners/HashLoader";
+import Contacts from "./components/Contacts";
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -29,6 +30,7 @@ const App = () => {
       <LastProduct />
       <Number />
       <Partners />
+      <Contacts />
     </>
   );
 };

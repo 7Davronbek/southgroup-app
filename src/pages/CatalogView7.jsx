@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import HashLoader from "react-spinners/HashLoader";
 import { Modal, ModalBody } from 'reactstrap'
+import NewProduct from '../components/NewProduct';
 
 const CatalogView7 = (props) => {
     const [loading, setLoading] = useState(false)
@@ -45,7 +46,7 @@ const CatalogView7 = (props) => {
 
                             <p className="mt-4">{acsessuary.description}</p>
 
-                            <button className="btn btn-outline-danger px-4 py-2 d-block ml-auto mt-5">Pozvonit</button>
+                            <a href='tel:+998946408356' className="myBtn view-tel ml-auto"><span></span> Позвонить</a>
                         </div>
                     </div>
                     <div className="row mt-5">
@@ -61,6 +62,8 @@ const CatalogView7 = (props) => {
                     <img src={`/img/${acsessuary.image}`} className='w-100' alt="" />
                 </ModalBody>
             </Modal>
+
+            <NewProduct />
         </>
     )
 }

@@ -34,6 +34,18 @@ html {
 
 }
 
+.myCard {
+    border: 1px solid rgba(192, 192, 192, 0.322);
+    transition: all .4s ease-in-out;
+    padding: 10px;
+    border-radius: 10px;
+    height: 100%;
+    
+    &:hover {
+        box-shadow: 0 0 10px rgba(192, 192, 192, 0.466);
+    }
+}
+
 .modal {
 
     &.show {
@@ -53,7 +65,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+
 
     .loader {
         position: fixed;
@@ -102,11 +114,11 @@ body {
 
 
     .app-cursor {
-        z-index: 0;
-        width: 30px;
-        height: 30px;
+        z-index: -2;
+        width: 20px;
+        height: 20px;
         border: 1px solid $org;
-        border-radius: 10px;
+        border-radius: 7px;
         background-color: transparent;
         overflow: hidden;
         position: fixed;
@@ -132,7 +144,7 @@ body {
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 0;
+            z-index: -2;
         }
 
         @media(max-width: 767px) {
@@ -141,7 +153,7 @@ body {
     }
 
     .myBtn {
-        padding: 10px 30px;
+        padding: 12px 30px;
         border: 2px solid $org;
         color: $white;
         position: relative;
@@ -154,7 +166,7 @@ body {
 
         &:hover {
             color: $white;
-
+            border-color: transparent;
             span {
                 width: 700px;
                 height: 700px;
@@ -197,6 +209,16 @@ body {
                 color: $dark;
                 font-size: 18px;
                 font-weight: 600;
+                transition: all .3s ease-in-out;
+                &.active{
+                    border-bottom: 2px solid red;
+                    padding-bottom: 7px;
+                    border-radius: 2px;
+                    color: $org;
+                }
+                &:hover{
+                    color: $org;
+                }
             }
 
             .katalog {
@@ -557,19 +579,20 @@ body {
             .left {
                 background-color: $darklight;
                 padding: 0 10px 10px;
+                position: relative;
 
-                img {
-                    position: relative;
+                .img {
                     z-index: 1;
                 }
 
-                span {
-                    padding: 50px 100px;
+                .span {
+                    width: 200px;
+                    height: 100px;
+                    bottom: -43px;
+                    left: 87px;
                     background-color: $org;
                     position: absolute;
-                    color: $white;
-                    top: 320px;
-                    right: 440px;
+                    z-index: -1;
                 }
             }
 
@@ -596,12 +619,12 @@ body {
                     background-color: $org;
                     position: absolute;
                     color: $white;
-                    bottom: 340px;
-                    left: 440px;
+                    bottom: 400px;
+                    left: 500px;
                 }
 
                 .myBtn {
-                    padding: 10px 30px;
+                    padding: 12px 30px;
                     border: 2px solid $org;
                     color: $white;
                     position: relative;
@@ -615,13 +638,15 @@ body {
 
                     &:hover {
                         color: $white;
-
+                        border-color: transparent;
                         span {
                             width: 700px;
                             height: 700px;
                             z-index: -1;
                         }
                     }
+
+                    
 
                     span {
                         position: absolute;
@@ -648,6 +673,16 @@ body {
 
                 p{
                     margin-top: 25px;
+                }
+
+                .span {
+                    width: 200px;
+                    height: 100px;
+                    bottom: -43px;
+                    left: 280px;
+                    background-color: $org;
+                    position: absolute;
+                    z-index: -1;
                 }
 
                 span{
@@ -685,7 +720,7 @@ body {
     }
 
     .partners{
-        margin-top: 100px;
+        padding: 100px 0 50px;
         h2 {
             font-weight: 600;
             font-size: 40px;
@@ -717,16 +752,16 @@ body {
                     position: absolute;
                     background-color: $org;
                     padding: 60px 50px 10px 50px;
-                    bottom: 420px;
-                    right: 500px;
+                    bottom: 480px;
+                    right: 520px;
                     z-index: 0;
                 }
                 .bot-span{
                     position: absolute;
                     background-color: #d6171f;
                     padding: 10px 120px 70px 50px;
-                    bottom: -70px;
-                    right: -145px;
+                    bottom: -40px;
+                    right: -260px;
                     z-index: 0;
                 }
             }
@@ -759,7 +794,7 @@ body {
         color: $white;
 
         .myBtn{
-            padding: 10px;
+            padding: 10px 30px;
             border: 2px solid $org;
             color: $white;
             position: relative;
@@ -773,7 +808,7 @@ body {
 
             &:hover {
                 color: $white;
-
+                border-color: transparent;
                 span {
                     width: 700px;
                     height: 700px;
@@ -809,6 +844,127 @@ body {
             padding-top: 20px;
         }
     }
+
+    .catalog-page{
+        h2 {
+            font-weight: 600;
+            font-size: 40px;
+
+            span {
+                color: $org;
+            }
+        }
+        .nav-item{
+            margin-top: 15px;
+            .nav-link{
+                color: $dark;
+                &.active{
+                    background-color: $org;
+                    color: $white;
+                }
+            }
+        }
+        .myCard{
+            color: $dark;
+        }
+    }
+
+    .view-tel{
+        color: $org;
+    }
+
+
+    .catalog-products{
+        h2 {
+            font-weight: 600;
+            font-size: 40px;
+
+            span {
+                color: $org;
+            }
+        }
+        a{
+            color: $dark;
+        }
+    }
+
+    .connect-footer{
+        h2{
+            text-align: center;
+        }
+        .icon-footer{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            a{
+                padding: 10px;
+            }
+        }
+    }
+
+    .about{
+        margin-top: 50px;
+        h2 {
+            font-weight: 600;
+            font-size: 40px;
+
+            span {
+                color: $org;
+            }
+        }
+    }
+
+    .services{
+        margin-top: 50px;
+        h2 {
+            font-weight: 600;
+            font-size: 40px;
+
+            span {
+                color: $org;
+            }
+        }
+    }
+
+
+    .contacts{
+        margin-top: 50px;
+        h2 {
+            font-weight: 600;
+            font-size: 40px;
+
+            span {
+                color: $org;
+            }
+        }
+        .our-contact{
+            padding-left: 30px;
+            border-left: 3px solid $org;
+        }
+        .contact{
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+            color: $dark;
+            h5{
+                margin-top: 10px;
+            }
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .map{
+            iframe{
+                border: none;
+                border-radius: 20px;
+                box-shadow: 5px 3px 10px silver;
+            }
+        }
+    }
+
+
+
 
 
 

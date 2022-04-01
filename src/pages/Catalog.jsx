@@ -4,6 +4,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom'
 import HashLoader from "react-spinners/HashLoader";
+import Partners from '../components/Partners';
 
 const Catalog = () => {
     const [category, setCategory] = useState([])
@@ -125,11 +126,11 @@ const Catalog = () => {
                 <div className="loader">
                     <HashLoader loading={loading} size="40" color="red" />
                 </div> : ''}
-            <div className="catalog">
+            <div className="catalog-page">
                 <div className="container">
                     <div className="row">
                         <div className="col-12 py-5">
-                            <h4>Catalog</h4>
+                            <h2><span>C</span>atalog</h2>
                         </div>
                     </div>
                     <div className="row">
@@ -159,7 +160,7 @@ const Catalog = () => {
                                         {taxeometr.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex myCard align-items-center' to={`/catalog/${item.id}`}  >
+                                                    <Link className='d-flex myCard align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
@@ -273,7 +274,7 @@ const Catalog = () => {
                                     </Row>
                                 </TabPane>
 
-                                <TabPane tabId="7" className='   '>
+                                <TabPane tabId="7" className=''>
                                     <Row>
                                         {acsessuary.map((item, index) => {
                                             return (
@@ -298,6 +299,7 @@ const Catalog = () => {
                     </div>
                 </div>
             </div>
+            <Partners />
         </>
     )
 }

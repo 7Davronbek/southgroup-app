@@ -8,7 +8,7 @@ import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 
 // import required modules
-import { EffectCube, Pagination } from "swiper";
+import { Autoplay, EffectCube, Pagination } from "swiper";
 import { Link } from "react-router-dom";
 
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
                                 effect={"cube"}
                                 grabCursor={true}
                                 loop={true}
+                                speed={2000}
                                 cubeEffect={{
                                     centeredSlides: true,
                                     shadow: true,
@@ -30,14 +31,18 @@ export default function App() {
                                     shadowOffset: 20,
                                     shadowScale: 0.94,
                                 }}
+                                autoplay={{
+                                    delay: 5000,
+                                    disableOnInteraction: false,
+                                }}
                                 pagination={{
                                     clickable: true,
                                 }}
-                                modules={[EffectCube, Pagination]}
+                                modules={[Autoplay, EffectCube, Pagination]}
                                 className="swiper mySwiper">
 
                                 <div className="swiper-wrapper">
-                                    <SwiperSlide className="swiper-slide card position-relative">
+                                    <SwiperSlide style={{ transition: 'all 2s ease' }} className="swiper-slide card position-relative">
                                         <img src="/img/taxeometr-header-01.webp" alt="" className="card-img" />
                                         <div className="blur"></div>
                                         <div className="card-img-overlay zed">
@@ -45,12 +50,12 @@ export default function App() {
                                                 ЛУЧШАЯ ЖИЗНЬ,<br />
                                                 СОЗДАННАЯ ДЛЯ ВАС!
                                             </h5>
-                                            <Link to='/' className="myBtn uppercase"
-                                            ><span></span> Перейти в Каталог</Link
-                                            >
+                                            <Link to='/catalog/taxeometr' className="myBtn uppercase"
+                                            ><span></span> Перейти в Каталог
+                                            </Link>
                                         </div>
                                     </SwiperSlide>
-                                    <SwiperSlide className="swiper-slide card position-relative">
+                                    <SwiperSlide style={{ transition: 'all 2s ease' }} className="swiper-slide card position-relative">
                                         <img src="/img/gnss-header-02.webp" alt="" className="card-img" />
                                         <div className="blur"></div>
                                         <div className="card-img-overlay zed">
@@ -58,12 +63,12 @@ export default function App() {
                                                 ЛУЧШАЯ ЖИЗНЬ,<br />
                                                 СОЗДАННАЯ ДЛЯ ВАС!
                                             </h5>
-                                            <Link to='/' className="myBtn uppercase"
-                                            ><span></span> Перейти в Каталог</Link
-                                            >
+                                            <Link to='/catalog/gnss' className="myBtn uppercase"
+                                            ><span></span> Перейти в Каталог
+                                            </Link>
                                         </div>
                                     </SwiperSlide>
-                                    <SwiperSlide className="swiper-slide card position-relative">
+                                    <SwiperSlide style={{ transition: 'all 2s ease' }} className="swiper-slide card position-relative">
                                         <img src="/img/nivelir-header-03.webp" alt="" className="card-img" />
                                         <div className="blur"></div>
                                         <div className="card-img-overlay zed">
@@ -71,9 +76,9 @@ export default function App() {
                                                 ЛУЧШАЯ ЖИЗНЬ,<br />
                                                 СОЗДАННАЯ ДЛЯ ВАС!
                                             </h5>
-                                            <Link to='/' className="myBtn uppercase"
-                                            ><span></span> Перейти в Каталог</Link
-                                            >
+                                            <Link to='/catalog/nivelir' className="myBtn uppercase"
+                                            ><span></span> Перейти в Каталог
+                                            </Link>
                                         </div>
                                     </SwiperSlide>
                                 </div>
