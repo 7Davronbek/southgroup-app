@@ -38,7 +38,7 @@ const SeeNewProduct = (props) => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-4">
-                            <img onClick={() => setIsOpen(true)} className='w-100' style={{ cursor:'pointer', backgroundColor: 'red' }} src={`/img/${product.image}`} alt="" />
+                            <img onClick={() => setIsOpen(true)} className='w-100 img' src={`/img/${product.image}`} alt="" />
                         </div>
 
                         <div className="col-lg-6 ml-auto">
