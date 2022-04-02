@@ -11,7 +11,6 @@ const NewProduct = () => {
     const getNewProduct = () => {
         axios.get( API + 'api/product')
             .then((res) => {
-                console.log(res);
                 setProduct(res.data)
             })
             .catch((err) => {

@@ -12,6 +12,7 @@ import "swiper/css/thumbs";
 
 import { Pagination } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper";
+import { API } from '../tools/constants';
 
 
 const CatalogView = (props) => {
@@ -23,9 +24,10 @@ const CatalogView = (props) => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://laravelcrudtutorial.000webhostapp.com/api/taxeometr/${props.match.params.id}`)
+        axios.get(API + `api/product/${props.match.params.id}`)
             .then((res) => {
-                setCatalog(res.data.taxeometr)
+                // setCatalog(res.data.taxeometr)
+                console.log(res);
                 setLoading(false)
             })
             .catch((err) => {
@@ -83,7 +85,7 @@ const CatalogView = (props) => {
                                     clickable: true,
                                 }}
                                 watchSlidesProgress={true}
-                                modules={[ Pagination, FreeMode, Navigation, Thumbs]}
+                                modules={[Pagination, FreeMode, Navigation, Thumbs]}
                                 className="mySwiper w-10"
                             >
                                 <SwiperSlide>
