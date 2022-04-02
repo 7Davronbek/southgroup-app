@@ -23,14 +23,14 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to='/' href="#"> Услуги </Link>
+                                    <Link to='/services' href="#"> Услуги </Link>
                                 </li>
 
                                 <li>
                                     <Link to='/about' href="#"> О компании </Link>
                                 </li>
                                 <li>
-                                    <Link to='/' href="#"> Контакты </Link>
+                                    <Link to='/contacts' href="#"> Контакты </Link>
                                 </li>
                             </ul>
                         </div>

@@ -35,66 +35,51 @@ import Trassoiskatel from "./pages/Trassoiskatel";
 import Acsessuary from "./pages/Acsessuary";
 import Services from "./components/Services";
 import Contacts from "./components/Contacts";
-import { applyMiddleware, compose, createStore } from "redux";
-import { rootReducer } from "./redux/reducers/rootReducer";
-import thunk from "redux-thunk";
-import { Provider } from "react-redux";
-
-// const store = createStore(
-//   rootReducer,
-//   compose(
-//     applyMiddleware(thunk),
-//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-//   )
-// );
 
 ReactDOM.render(
-  // <Provider store={store}>
-    <Router>
-      <Cursor />
-      <CustomCursor />
+  <Router>
+    <Cursor />
+    <CustomCursor />
 
-      <Navbar />
-      <ScrollToTop />
+    <Navbar />
+    <ScrollToTop />
 
-      <Switch>
-        <Route path="/" exact component={App} />
+    <Switch>
+      <Route path="/" exact component={App} />
 
-        <Route path="/catalog" exact component={Catalog} />
+      <Route path="/catalog" exact component={Catalog} />
 
-        <Route path="/catalog-taxeometr/:id" exact component={CatalogView} />
-        {/* <Route path="/catalog/:title/:id" exact component={CatalogView} /> */}
+      <Route path="/catalog-taxeometr/:id" exact component={CatalogView} />
+      {/* <Route path="/catalog/:title/:id" exact component={CatalogView} /> */}
+      
+      <Route path="/catalog-gnss/:id" exact component={CatalogView2} />
+      <Route path="/catalog-nivelir/:id" exact component={CatalogView3} />
+      <Route path="/catalog-lazerniy/:id" exact component={CatalogView4} />
+      <Route path="/catalog-teodolit/:id" exact component={CatalogView5} />
+      <Route path="/catalog-trassoiskatel/:id" exact component={CatalogView6} />
+      <Route path="/catalog-acsessuary/:id" exact component={CatalogView7} />
 
-        <Route path="/catalog-gnss/:id" exact component={CatalogView2} />
-        <Route path="/catalog-nivelir/:id" exact component={CatalogView3} />
-        <Route path="/catalog-lazerniy/:id" exact component={CatalogView4} />
-        <Route path="/catalog-teodolit/:id" exact component={CatalogView5} />
-        <Route
-          path="/catalog-trassoiskatel/:id"
-          exact
-          component={CatalogView6}
-        />
-        <Route path="/catalog-acsessuary/:id" exact component={CatalogView7} />
+      <Route path="/catalog/taxeometr" exact component={Taxeometr} />
+      <Route path="/catalog/gnss" exact component={Gnss} />
+      <Route path="/catalog/nivelir" exact component={Nivelir} />
+      <Route path="/catalog/lazerniy" exact component={Lazerniy} />
+      <Route path="/catalog/teodolit" exact component={Teodolit} />
+      <Route path="/catalog/trassoiskatel" exact component={Trassoiskatel} />
+      <Route path="/catalog/acsessuary" exact component={Acsessuary} />
 
-        <Route path="/catalog/taxeometr" exact component={Taxeometr} />
-        <Route path="/catalog/gnss" exact component={Gnss} />
-        <Route path="/catalog/nivelir" exact component={Nivelir} />
-        <Route path="/catalog/lazerniy" exact component={Lazerniy} />
-        <Route path="/catalog/teodolit" exact component={Teodolit} />
-        <Route path="/catalog/trassoiskatel" exact component={Trassoiskatel} />
-        <Route path="/catalog/acsessuary" exact component={Acsessuary} />
 
-        <Route path="/services" exact component={Services} />
-        <Route path="/about" exact component={About} />
-        <Route path="/contacts" exact component={Contacts} />
 
-        <Route path="/new-catalog/:id" exact component={SeeNewProduct} />
-      </Switch>
+      <Route path="/services" exact component={Services} />
+      <Route path="/about" exact component={About} />
+      <Route path="/contacts" exact component={Contacts} />
 
-      <Footer />
-    </Router>
-  // </Provider>
-  ,
+
+
+      <Route path="/new-catalog/:id" exact component={SeeNewProduct} />
+    </Switch>
+
+    <Footer />
+  </Router>,
   document.getElementById("root")
 );
 

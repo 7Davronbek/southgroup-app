@@ -561,14 +561,6 @@ body {
 
     }
 
-    .seeNewProduct {
-
-        .img {
-            cursor: pointer;
-            background-color: #ff000048;
-            border-radius: 10px 60px/25px;
-        }
-    }
 
     .history {
         h2 {
@@ -971,6 +963,10 @@ body {
         }
     }
 
+
+    .productImages{
+        height: 400px;
+    }
 
 
 
