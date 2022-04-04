@@ -23,9 +23,9 @@ const Catalog = () => {
     const [loading, setLoading] = useState(false)
 
     const getCategory = async () => {
-        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
+        await axios.get(API + 'api/category')
             .then((res) => {
-                setCategory(res.data.categories)
+                setCategory(res.data)
             })
             .catch((err) => {
                 console.log(err);
@@ -36,7 +36,6 @@ const Catalog = () => {
         await axios.get(API + 'api/category/1')
             .then((res) => {
                 setTaxeometr(res.data.products)
-                console.log(res);
             })
             .catch((err) => {
                 console.log(err);
@@ -139,171 +138,6 @@ const Catalog = () => {
                             <h2><span>C</span>atalog</h2>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-lg-3">
-                            <Nav tabs className='d-flex flex-column justify-content-end  nav-pills nav-justified'>
-                                {category.map((item, index) => {
-                                    return (
-                                        <NavItem
-                                            key={index}
-                                        >
-                                            <NavLink
-                                                className={classnames({ active: activeTab === `${index + 1}` })}
-                                                onClick={() => { toggle(`${index + 1}`) }}
-                                            >
-                                                {item.name}
-                                            </NavLink>
-                                        </NavItem>
-                                    )
-                                })}
-                            </Nav>
-                        </div>
-
-                        <div className="col-lg-9">
-                            <TabContent activeTab={activeTab}>
-                                <TabPane tabId="1" className=''>
-                                    <Row className='align-items-center'>
-                                        {taxeometr.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex myCard align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-                                <TabPane tabId="2" className=''>
-                                    <Row>
-                                        {gnss.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-gnss/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-
-                                <TabPane tabId="3" className='   '>
-                                    <Row>
-                                        {nivelir.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-nivelir/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-
-                                <TabPane tabId="4" className='   '>
-                                    <Row>
-                                        {lazerniy.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-lazerniy/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-
-                                <TabPane tabId="5" className='   '>
-                                    <Row>
-                                        {teodolit.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-teodolit/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-
-                                <TabPane tabId="6" className='   '>
-                                    <Row>
-                                        {trassoiskatel.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-trassoiskatel/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-
-                                <TabPane tabId="7" className=''>
-                                    <Row>
-                                        {acsessuary.map((item, index) => {
-                                            return (
-                                                <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-acsessuary/${item.id}`}  >
-                                                        <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
-                                                        </div>
-                                                        <div>
-                                                            <h5>{item.title}</h5>
-                                                            <p className='mt-3'>{item.description.substring(0, 40)}...</p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            )
-                                        })}
-                                    </Row>
-                                </TabPane>
-
-                            </TabContent>
-                        </div>
-                    </div>
-
 
                     <div className="row">
                         <div className="col-lg-3">
@@ -332,7 +166,7 @@ const Catalog = () => {
                                         {taxeometr.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex myCard align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
+                                                    <Link className='d-flex myCard align-items-center' to={`/new-catalog/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '120px' }} src={`/img/${item.image01}`} alt="" />
                                                         </div>
@@ -351,7 +185,7 @@ const Catalog = () => {
                                         {gnss.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-gnss/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center myCard' to={`/new-catalog/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '120px' }} src={`/img/${item.image01}`} alt="" />
                                                         </div>

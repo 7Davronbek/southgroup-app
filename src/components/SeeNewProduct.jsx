@@ -119,7 +119,8 @@ const SeeNewProduct = (props) => {
                             {descr?.map((item, index) => {
                                 return (
                                     <>
-                                        <h5 key={index} className='mb-3'>{item}</h5>
+                                        <h5 key={index + 1} className='mb-3'>{item}</h5>
+                                        
                                     </>
                                 )
                             })}
