@@ -28,7 +28,6 @@ const SeeNewProduct = (props) => {
             .then((res) => {
                 setProduct(res.data)
                 setDescr(res.data.big_description)
-                console.log(descr);
                 setLoading(false)
             })
             .catch((err) => {

@@ -202,7 +202,7 @@ const Navbar = () => {
                                         {taxeometr.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center' to={`/new-catalog/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '80px' }} src={`/img/${item.image01.substring(0, 40)}`} alt="" />
                                                         </div>
@@ -220,7 +220,7 @@ const Navbar = () => {
                                         {gnss.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center' to={`/catalog-gnss/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center' to={`/new-catalog/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '80px' }} src={`/img/${item.image01.substring(0, 40)}`} alt="" />
                                                         </div>

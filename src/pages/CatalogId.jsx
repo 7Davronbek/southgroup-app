@@ -5,14 +5,14 @@ import HashLoader from "react-spinners/HashLoader";
 import Catalog from '../components/Catalog';
 import { API } from '../tools/constants';
 
-const Taxeometr = (props) => {
-    const [taxeometr, setTaxeometr] = useState([])
+const CatalogId = (props) => {
+    const [catalogById, setCatalogById] = useState([])
     const [loading, setLoading] = useState(false)
-    const getTaxeometr = async () => {
-        await axios.get( API + `api/category/${props.match.params.id}`)
+        const getTaxeometr = async () => {
+            await axios.get( API + `api/category/${props.match.params.id}`)
             .then((res) => {
-                // setTaxeometr(res.data.products)
                 console.log(res);
+                setCatalogById(res.data.products)
             })
             .catch((err) => {
                 console.log(err);
@@ -40,12 +40,12 @@ const Taxeometr = (props) => {
                         </div>
                     </div>
                     <div className="row">
-                            {taxeometr.map((item, index) => {
+                            {catalogById?.map((item, index) => {
                                 return (
                                     <div className="col-lg-6 mt-5" key={index}>
-                                        <Link className='d-flex align-items-center myCard' to={`/catalog-taxeometr/${item.id}`}  >
+                                        <Link className='d-flex align-items-center myCard' to={`/new-catalog/${item.id}`}  >
                                             <div>
-                                                {/* <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" /> */}
+                                                <img style={{ width: '120px' }} src={`/img/${item.image01}`} alt="" />
                                             </div>
                                             <div>
                                                 <h5>{item.title}</h5>
@@ -64,4 +64,4 @@ const Taxeometr = (props) => {
     )
 }
 
-export default Taxeometr
+export default CatalogId
