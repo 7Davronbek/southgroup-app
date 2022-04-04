@@ -11,9 +11,11 @@ import "swiper/css/thumbs";
 
 import { Pagination } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper";
+import { API } from '../tools/constants';
 
 const SeeNewProduct = (props) => {
     const [product, setProduct] = useState({})
+    const [descr, setDescr] = useState([])
     const [loading, setLoading] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
 
@@ -22,10 +24,11 @@ const SeeNewProduct = (props) => {
 
     const getNewProduct = () => {
         setLoading(true)
-        axios.get(`https://laravelcrudtutorial.000webhostapp.com/api/products/${props.match.params.id}`)
+        axios.get(API + `api/product/${props.match.params.id}`)
             .then((res) => {
-                console.log(res);
-                setProduct(res.data.product)
+                setProduct(res.data)
+                setDescr(res.data.big_description)
+                console.log(descr);
                 setLoading(false)
             })
             .catch((err) => {
@@ -61,16 +64,16 @@ const SeeNewProduct = (props) => {
                                 className="mySwiper2 w-75"
                             >
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-1.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image01}`} className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-2.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image02}`} className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-3.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image03}`} className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-4.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image04}`} className='w-100 h-100' />
                                 </SwiperSlide>
                             </Swiper>
                             <Swiper
@@ -84,20 +87,20 @@ const SeeNewProduct = (props) => {
                                     clickable: true,
                                 }}
                                 watchSlidesProgress={true}
-                                modules={[ Pagination, FreeMode, Navigation, Thumbs]}
+                                modules={[Pagination, FreeMode, Navigation, Thumbs]}
                                 className="mySwiper w-10"
                             >
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-1.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image01}`} className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-2.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image02}`} className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-3.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image03}`} className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img alt='south-group' src="https://swiperjs.com/demos/images/nature-4.jpg" className='w-100 h-100' />
+                                    <img alt='south-group' src={`/img/${product.image04}`} className='w-100 h-100' />
                                 </SwiperSlide>
                             </Swiper>
                         </div>
@@ -114,7 +117,13 @@ const SeeNewProduct = (props) => {
 
                     <div className="row mt-5">
                         <div className="col-12">
-                            <h5>{product.big_description}</h5>
+                            {descr?.map((item, index) => {
+                                return (
+                                    <>
+                                        <h5 key={index} className='mb-3'>{item}</h5>
+                                    </>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import HashLoader from "react-spinners/HashLoader";
-import { Modal, ModalBody } from 'reactstrap'
+// import { Modal, ModalBody } from 'reactstrap'
 import NewProduct from '../components/NewProduct';
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,7 +18,8 @@ import { API } from '../tools/constants';
 const CatalogView = (props) => {
     const [catalog, setCatalog] = useState({})
     const [loading, setLoading] = useState(false)
-    const [isOpen, setIsOpen] = useState(false)
+    const [descr, setDescr] = useState([])
+    // const [isOpen, setIsOpen] = useState(false)
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -27,7 +28,8 @@ const CatalogView = (props) => {
         axios.get(API + `api/product/${props.match.params.id}`)
             .then((res) => {
                 // setCatalog(res.data.taxeometr)
-                console.log(res);
+                setCatalog(res.data);
+                setDescr(res.data.big_description);
                 setLoading(false)
             })
             .catch((err) => {
@@ -62,16 +64,16 @@ const CatalogView = (props) => {
                                 className="mySwiper2 w-75"
                             >
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                             </Swiper>
                             <Swiper
@@ -89,16 +91,16 @@ const CatalogView = (props) => {
                                 className="mySwiper w-10"
                             >
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                                 <SwiperSlide>
-                                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" className='w-100 h-100' />
+                                    <img src={`/img/${catalog.image01}`} alt='south-group' className='w-100 h-100' />
                                 </SwiperSlide>
                             </Swiper>
 
@@ -115,17 +117,21 @@ const CatalogView = (props) => {
                     </div>
                     <div className="row mt-5">
                         <div className="col-12">
-                            {catalog.big_description}
+                            {descr?.map((item,index) => {
+                                return (
+                                    <h5 className='mb-4' key={index}>{item}</h5>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <Modal className='modal-lg' isOpen={isOpen} toggle={() => setIsOpen(false)} >
+            {/* <Modal className='modal-lg' isOpen={isOpen} toggle={() => setIsOpen(false)} >
                 <ModalBody>
-                    <img src={`/img/${catalog.image}`} className='w-100' alt="" />
+                    <img src={`/img/${catalog.image01}`} className='w-100' alt="" />
                 </ModalBody>
-            </Modal>
+            </Modal> */}
 
             <NewProduct />
         </>

@@ -4,6 +4,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { API } from '../tools/constants';
 
 const Navbar = () => {
 
@@ -29,9 +30,9 @@ const Navbar = () => {
     }
 
     const getAllCategory = () => {
-        axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
+        axios.get(API + 'api/category')
             .then((res) => {
-                setCategories(res.data.categories)
+                setCategories(res.data)
             })
             .catch(err => { console.log(err); })
     }
@@ -49,9 +50,9 @@ const Navbar = () => {
 
 
     const getTaxeometr = async () => {
-        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/taxeometr')
+        await axios.get(API + 'api/category/1')
             .then((res) => {
-                setTaxeometr(res.data.taxeometr)
+                setTaxeometr(res.data.products)
             })
             .catch((err) => {
                 console.log(err);
@@ -60,9 +61,9 @@ const Navbar = () => {
     }
 
     const getGgss = async () => {
-        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/gnss')
+        await axios.get(API + 'api/category/2')
             .then((res) => {
-                setGnss(res.data.gnss)
+                setGnss(res.data.products)
             })
             .catch((err) => {
                 console.log(err);
@@ -203,7 +204,7 @@ const Navbar = () => {
                                                 <div className="col-lg-6 mb-4" key={index}>
                                                     <Link className='d-flex align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
                                                         <div>
-                                                            <img style={{ width: '80px' }} src={`/img/${item.image}`} alt="" />
+                                                            <img style={{ width: '80px' }} src={`/img/${item.image01.substring(0, 40)}`} alt="" />
                                                         </div>
                                                         <div className='ml-2'>
                                                             <h6>{item.title}</h6>
@@ -221,7 +222,7 @@ const Navbar = () => {
                                                 <div className="col-lg-6 mb-4" key={index}>
                                                     <Link className='d-flex align-items-center' to={`/catalog-gnss/${item.id}`}  >
                                                         <div>
-                                                            <img style={{ width: '80px' }} src={`/img/${item.image}`} alt="" />
+                                                            <img style={{ width: '80px' }} src={`/img/${item.image01.substring(0, 40)}`} alt="" />
                                                         </div>
                                                         <div className='ml-2'>
                                                             <h6>{item.title}</h6>
