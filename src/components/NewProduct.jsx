@@ -4,14 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API } from "../tools/constants";
 
 const NewProduct = () => {
     const [product, setProduct] = useState([])
     const getNewProduct = () => {
-        axios.get( API + 'api/product')
+        axios.get('https://laravelcrudtutorial.000webhostapp.com/api/products')
             .then((res) => {
-                setProduct(res.data)
+                setProduct(res.data.products)
             })
             .catch((err) => {
                 console.log(err);
@@ -46,7 +45,7 @@ const NewProduct = () => {
                                     return (
                                         <SwiperSlide key={index}>
                                             <Link to={`/new-catalog/${item.id}`} className="card h-100">
-                                                <img src={`../img/${item.image01}`} className="card-img-top w-100" alt="" />
+                                                <img src={`../img/${item.image}`} className="card-img-top" alt="" />
                                                 <div className="card-body">
                                                     <h5 className="card-title">{item.title}</h5>
                                                     <p className="card-text">{item.price}</p>

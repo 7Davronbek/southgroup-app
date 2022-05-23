@@ -5,27 +5,24 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom'
 import HashLoader from "react-spinners/HashLoader";
 import Partners from '../components/Partners';
-import { API } from '../tools/constants';
 
 const Catalog = () => {
     const [category, setCategory] = useState([])
-
     const [taxeometr, setTaxeometr] = useState([])
-    
     const [gnss, setGnss] = useState([])
     const [nivelir, setNivelir] = useState([])
     const [lazerniy, setLazerniy] = useState([])
     const [teodolit, setTeodolit] = useState([])
     const [trassoiskatel, setTrassoiskatel] = useState([])
     const [acsessuary, setAcsessuary] = useState([])
-
+    
     const [activeTab, setActiveTab] = useState('1');
     const [loading, setLoading] = useState(false)
 
     const getCategory = async () => {
-        await axios.get(API + 'api/category')
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
             .then((res) => {
-                setCategory(res.data)
+                setCategory(res.data.categories)
             })
             .catch((err) => {
                 console.log(err);
@@ -33,9 +30,9 @@ const Catalog = () => {
     }
 
     const getTaxeometr = async () => {
-        await axios.get(API + 'api/category/1')
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/taxeometr')
             .then((res) => {
-                setTaxeometr(res.data.products)
+                setTaxeometr(res.data.taxeometr)
             })
             .catch((err) => {
                 console.log(err);
@@ -44,9 +41,9 @@ const Catalog = () => {
     }
 
     const getGgss = async () => {
-        await axios.get(API + 'api/category/2')
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/gnss')
             .then((res) => {
-                setGnss(res.data.products)
+                setGnss(res.data.gnss)
             })
             .catch((err) => {
                 console.log(err);
@@ -72,7 +69,7 @@ const Catalog = () => {
                 console.log(err);
             })
     }
-
+    
     const getTeo = async () => {
         await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/teodolit')
             .then((res) => {
@@ -82,7 +79,7 @@ const Catalog = () => {
                 console.log(err);
             })
     }
-
+    
     const getTrass = async () => {
         await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/trassoiskatel')
             .then((res) => {
@@ -92,7 +89,7 @@ const Catalog = () => {
                 console.log(err);
             })
     }
-
+    
     const getAcs = async () => {
         await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/acsessuary')
             .then((res) => {
@@ -106,9 +103,7 @@ const Catalog = () => {
     useEffect(() => {
         setLoading(true)
         getCategory()
-
         getTaxeometr()
-        
         getGgss()
         getNivelir()
         getLazerniy()
@@ -138,7 +133,6 @@ const Catalog = () => {
                             <h2><span>C</span>atalog</h2>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col-lg-3">
                             <Nav tabs className='d-flex flex-column justify-content-end  nav-pills nav-justified'>
@@ -166,9 +160,9 @@ const Catalog = () => {
                                         {taxeometr.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex myCard align-items-center' to={`/new-catalog/${item.id}`}  >
+                                                    <Link className='d-flex myCard align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
                                                         <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image01}`} alt="" />
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
                                                         <div>
                                                             <h5>{item.title}</h5>
@@ -185,9 +179,9 @@ const Catalog = () => {
                                         {gnss.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <Link className='d-flex align-items-center myCard' to={`/new-catalog/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center myCard' to={`/catalog-gnss/${item.id}`}  >
                                                         <div>
-                                                            <img style={{ width: '120px' }} src={`/img/${item.image01}`} alt="" />
+                                                            <img style={{ width: '120px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
                                                         <div>
                                                             <h5>{item.title}</h5>
@@ -303,7 +297,6 @@ const Catalog = () => {
                             </TabContent>
                         </div>
                     </div>
-
                 </div>
             </div>
             <Partners />

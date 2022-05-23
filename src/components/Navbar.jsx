@@ -4,7 +4,6 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row } from 'reactstrap';
 import classnames from 'classnames';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-import { API } from '../tools/constants';
 
 const Navbar = () => {
 
@@ -24,14 +23,15 @@ const Navbar = () => {
     const [acsessuary, setAcsessuary] = useState([])
 
 
+
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
     const getAllCategory = () => {
-        axios.get(API + 'api/category')
+        axios.get('https://laravelcrudtutorial.000webhostapp.com/api/categories')
             .then((res) => {
-                setCategories(res.data)
+                setCategories(res.data.categories)
             })
             .catch(err => { console.log(err); })
     }
@@ -49,9 +49,9 @@ const Navbar = () => {
 
 
     const getTaxeometr = async () => {
-        await axios.get(API + 'api/category/1')
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/taxeometr')
             .then((res) => {
-                setTaxeometr(res.data.products)
+                setTaxeometr(res.data.taxeometr)
             })
             .catch((err) => {
                 console.log(err);
@@ -60,75 +60,75 @@ const Navbar = () => {
     }
 
     const getGgss = async () => {
-        await axios.get(API + 'api/category/2')
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/gnss')
             .then((res) => {
-                setGnss(res.data.products)
+                setGnss(res.data.gnss)
             })
             .catch((err) => {
                 console.log(err);
             })
     }
 
-    // const getNivelir = async () => {
-    //     await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/nivelir')
-    //         .then((res) => {
-    //             setNivelir(res.data.nivelir)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
+    const getNivelir = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/nivelir')
+            .then((res) => {
+                setNivelir(res.data.nivelir)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
-    // const getLazerniy = async () => {
-    //     await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/lazerniy')
-    //         .then((res) => {
-    //             setLazerniy(res.data.lazerniy)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
+    const getLazerniy = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/lazerniy')
+            .then((res) => {
+                setLazerniy(res.data.lazerniy)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
-    // const getTeo = async () => {
-    //     await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/teodolit')
-    //         .then((res) => {
-    //             setTeodolit(res.data.teodolit)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
+    const getTeo = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/teodolit')
+            .then((res) => {
+                setTeodolit(res.data.teodolit)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
-    // const getTrass = async () => {
-    //     await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/trassoiskatel')
-    //         .then((res) => {
-    //             setTrassoiskatel(res.data.trassoiskatel)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
+    const getTrass = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/trassoiskatel')
+            .then((res) => {
+                setTrassoiskatel(res.data.trassoiskatel)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
-    // const getAcs = async () => {
-    //     await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/acsessuary')
-    //         .then((res) => {
-    //             setAcsessuary(res.data.acsessuary)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         })
-    // }
+    const getAcs = async () => {
+        await axios.get('https://laravelcrudtutorial.000webhostapp.com/api/acsessuary')
+            .then((res) => {
+                setAcsessuary(res.data.acsessuary)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
 
     useEffect(() => {
         getAllCategory()
         getTaxeometr()
         getGgss()
-        // getNivelir()
-        // getLazerniy()
-        // getTeo()
-        // getTrass()
-        // getAcs()
+        getNivelir()
+        getLazerniy()
+        getTeo()
+        getTrass()
+        getAcs()
     }, [])
 
     return (
@@ -201,14 +201,14 @@ const Navbar = () => {
                                         {taxeometr.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <a className='d-flex align-items-center' href={`/new-catalog/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center' to={`/catalog-taxeometr/${item.id}`}  >
                                                         <div>
-                                                            <img style={{ width: '80px' }} src={`/img/${item.image01.substring(0, 40)}`} alt="" />
+                                                            <img style={{ width: '80px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
                                                         <div className='ml-2'>
                                                             <h6>{item.title}</h6>
                                                         </div>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             )
                                         })}
@@ -219,14 +219,14 @@ const Navbar = () => {
                                         {gnss.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <a className='d-flex align-items-center' href={`/new-catalog/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center' to={`/catalog-gnss/${item.id}`}  >
                                                         <div>
-                                                            <img style={{ width: '80px' }} src={`/img/${item.image01.substring(0, 40)}`} alt="" />
+                                                            <img style={{ width: '80px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
                                                         <div className='ml-2'>
                                                             <h6>{item.title}</h6>
                                                         </div>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             )
                                         })}
@@ -237,14 +237,14 @@ const Navbar = () => {
                                         {nivelir.map((item, index) => {
                                             return (
                                                 <div className="col-lg-6 mb-4" key={index}>
-                                                    <a className='d-flex align-items-center' to={`/catalog-nivelir/${item.id}`}  >
+                                                    <Link className='d-flex align-items-center' to={`/catalog-nivelir/${item.id}`}  >
                                                         <div>
                                                             <img style={{ width: '80px' }} src={`/img/${item.image}`} alt="" />
                                                         </div>
                                                         <div className='ml-2'>
                                                             <h6>{item.title}</h6>
                                                         </div>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             )
                                         })}

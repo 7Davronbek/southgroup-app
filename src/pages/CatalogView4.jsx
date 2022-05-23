@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import HashLoader from "react-spinners/HashLoader";
 import { Modal, ModalBody } from 'reactstrap'
-import Catalog from './Catalog';
+import NewProduct from '../components/NewProduct';
+
 import { Swiper, SwiperSlide } from "swiper/react";
 
 
@@ -12,20 +13,20 @@ import "swiper/css/thumbs";
 import { Pagination } from "swiper";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
-const SeeNewProduct = (props) => {
-    const [product, setProduct] = useState({})
+
+const CatalogView4 = (props) => {
     const [loading, setLoading] = useState(false)
     const [isOpen, setIsOpen] = useState(false)
+    const [lazerniy, setLazerniy] = useState([])
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-
-    const getNewProduct = () => {
+    useEffect(() => {
         setLoading(true)
-        axios.get(`https://laravelcrudtutorial.000webhostapp.com/api/products/${props.match.params.id}`)
+
+        axios.get(`https://laravelcrudtutorial.000webhostapp.com/api/lazerniy/${props.match.params.id}`)
             .then((res) => {
-                console.log(res);
-                setProduct(res.data.product)
+                setLazerniy(res.data.lazerniy)
                 setLoading(false)
             })
             .catch((err) => {
@@ -34,22 +35,21 @@ const SeeNewProduct = (props) => {
             .finally(() => {
                 setLoading(false)
             })
-    }
 
-    useEffect(() => {
-        getNewProduct()
-    }, [])
+    }, [props.match.params.id])
     return (
         <>
             {loading ?
                 <div className="loader">
                     <HashLoader loading={loading} size="40" color="red" />
                 </div> : ''}
-            <div className="seeNewProduct pt-5 mt-5">
+
+            <div className="ggView pt-5">
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6 d-flex productImages">
-                            {/* <img onClick={() => setIsOpen(true)} className='w-100' style={{ cursor: 'pointer', backgroundColor: 'red' }} src={`/img/${product.image}`} alt="" /> */}
+                            {/* <img onClick={() => setIsOpen(true)} className='w-100' src={`/img/${lazerniy.image}`} alt="" /> */}
+
                             <Swiper
                                 loop={true}
                                 spaceBetween={10}
@@ -103,39 +103,31 @@ const SeeNewProduct = (props) => {
                         </div>
 
                         <div className="col-lg-6 ml-auto">
-                            <h3>{product.title}</h3>
-                            <h5 className='mt-4'>{product.price}</h5>
+                            <h3>{lazerniy.title}</h3>
+                            <h5 className='mt-4'>{lazerniy.price}</h5>
 
-                            <p className="mt-4">{product.description}</p>
+                            <p className="mt-4">{lazerniy.description}</p>
 
                             <a href='tel:+998946408356' className="myBtn view-tel ml-auto"><span></span> Позвонить</a>
                         </div>
                     </div>
-
                     <div className="row mt-5">
                         <div className="col-12">
-                            <h5>{product.big_description}</h5>
+                            {lazerniy.big_description}
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-
-
             <Modal className='modal-lg' isOpen={isOpen} toggle={() => setIsOpen(false)} >
                 <ModalBody>
-                    <img src={`/img/${product.image}`} className='w-100' alt="" />
+                    <img src={`/img/${lazerniy.image}`} className='w-100' alt="" />
                 </ModalBody>
             </Modal>
 
-            <Catalog />
+            <NewProduct />
         </>
     )
 }
 
-export default SeeNewProduct
-
-
-
+export default CatalogView4
